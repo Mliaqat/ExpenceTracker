@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {TransactionContext} from "./TransContext"
 
-function Child() {
+function Child(props) {
     let {transaction,addtranstion} =useContext(TransactionContext)
     console.log(transaction)
 
@@ -33,22 +33,21 @@ function Child() {
 
    
   return (
-      <div className='container layout mx-auto' >
+      <div className='container layout mx-auto shadow-lg p-3 mb-5 bg-white rounded mt-5 p-5' >
   <h1 className='text-center'>Expense Tracker</h1>  
-
-    <h2>Your Balances <br></br> {getIncome() + getExpense()}</h2 >
-    <div className='d-flex justify-content-between'>
-        <h2>Income <br/> {getIncome()}</h2>
-        <h2>Expense <br/> {getExpense()}</h2>
+    <h3>Your Balances <br></br> {getIncome() + getExpense()}</h3 >
+    <div className='d-flex justify-content-between shadow-lg p-2 mb-1 bg-white rounded'>
+        <h3>Income <br/> {getIncome()}</h3>
+        <h3>Expense <br/> {getExpense()}</h3>
     </div>
-    <h2>History</h2>
+    <h3>History</h3>
     <hr></hr>
    
     <ul className='list-unstyled'>
         {transaction &&
             transaction.map((data,index)=>{
                 return(
-                <li className='d-flex justify-content-between align-items-center'>
+                <li className='d-flex justify-content-between align-items-center shadow-lg p-2 mb-1 bg-white rounded'>
             <h5>{data.desc}</h5>
             <h4>{data.amount}</h4>
         </li>
@@ -58,7 +57,7 @@ function Child() {
         }
     </ul>
 
-    <h2>Add new Traction</h2>
+    <h3>Add new Traction</h3>
     <hr></hr>
     <form onSubmit={handleSubmit}>
         <label>Add Description
